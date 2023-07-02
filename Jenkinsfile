@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your Terraform code repository
-                git clone 'https://github.com/rohanchandane/terraform-hello-world.git'
+                sh 'git clone https://github.com/rohanchandane/terraform-hello-world.git'
             }
         }
 
