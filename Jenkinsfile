@@ -5,21 +5,27 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout your Terraform code repository
-                git 'https://github.com/rohanchandane/terraform-hello-world.git'
+                git clone 'https://github.com/rohanchandane/terraform-hello-world.git'
             }
         }
 
         stage('Terraform Init') {
             steps {
-                // Run Terraform initialization
-                sh 'terraform init'
+                // Navigate to the cloned Terraform repository directory
+                dir('terraform') {
+                    // Run Terraform initialization
+                    sh 'terraform init'
+                }
             }
         }
 
         stage('Terraform Apply') {
             steps {
-                // Run Terraform apply to update the infrastructure
-                sh 'terraform apply -auto-approve'
+                // Navigate to the cloned Terraform repository directory
+                dir('terraform') {
+                    // Run Terraform apply to update the infrastructure
+                    sh 'terraform apply -auto-approve'
+                }
             }
         }
     }
