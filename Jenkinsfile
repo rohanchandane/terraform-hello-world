@@ -4,10 +4,9 @@ pipeline {
     stages {
         stage('Set Terraform Cloud Token') {
             steps {
-                withCredentials([string(credentialsId: 'TERRAFORM_CLOUD_SESSION_TOKEN', variable: 'TF_TOKEN')]) {
+                withCredentials([string(credentialsId: 'TERRAFORM_CLOUD_SESSION_TOKEN', variable: 'TF_TOKEN_terraform_io')]) {
                     sh """
-                        export TF_CLI_CONFIG_FILE="/var/lib/jenkins/.terraform.d/credentials.tfrc.json"
-                        echo 'credentials "app.terraform.io" { token = "'\$TF_TOKEN'" }' > "/var/lib/jenkins/.terraform.d/credentials.tfrc.json"
+                        export TF_TOKEN_terraform_io
                     """
                 }
             }
