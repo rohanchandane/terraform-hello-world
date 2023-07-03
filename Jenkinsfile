@@ -15,6 +15,7 @@ pipeline {
                 // Navigate to the cloned Terraform repository directory
                 dir('terraform') {
                     // Run Terraform initialization
+                    sh 'ls -l'
                     sh 'terraform init'
                 }
             }
