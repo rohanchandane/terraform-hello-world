@@ -12,6 +12,10 @@ pipeline {
 
         stage('Terraform Init') {
             steps {
+
+                // Run Terraform login to authenticate with Terraform Cloud or Terraform Enterprise
+                sh 'terraform login <TERRAFORM_CLOUD_LOGIN_TOKEN>'
+
                 // Navigate to the cloned Terraform repository directory
                 dir('terraform-hello-world') {
                     // Run Terraform initialization
