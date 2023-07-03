@@ -13,7 +13,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 // Navigate to the cloned Terraform repository directory
-                dir('terraform') {
+                dir('terraform-hello-world') {
                     // Run Terraform initialization
                     sh 'ls -l'
                     sh 'terraform init'
@@ -24,7 +24,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 // Navigate to the cloned Terraform repository directory
-                dir('terraform') {
+                dir('terraform-hello-world') {
                     // Run Terraform apply to update the infrastructure
                     sh 'terraform apply -auto-approve'
                 }
