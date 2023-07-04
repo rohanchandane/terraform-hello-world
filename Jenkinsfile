@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('Set Terraform Cloud Token') {
             steps {
-                withCredentials([string(credentialsId: 'TERRAFORM_CLOUD_LOGIN_TOKEN', variable: 'TF_TOKEN_terraform_io')]) {
+                withCredentials([string(credentialsId: 'TERRAFORM_CLOUD_LOGIN_TOKEN', variable: 'TF_TOKEN_app_terraform_io')]) {
                     sh """
-                        export $TF_TOKEN_terraform_io
+                        export TF_TOKEN_app_terraform_io
                     """
                 }
             }
