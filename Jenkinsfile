@@ -39,10 +39,12 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
+                withCredentials([string(credentialsId: 'TERRAFORM_CLOUD_LOGIN_TOKEN', variable: 'TF_TOKEN_app_terraform_io')]) {
                 // Navigate to the cloned Terraform repository directory
-                dir('terraform-hello-world') {
-                    // Run Terraform apply to update the infrastructure
-                    sh 'terraform apply -auto-approve'
+                    dir('terraform-hello-world') {
+                        // Run Terraform apply to update the infrastructure
+                        sh 'terraform apply -auto-approve'
+                    }
                 }
             }
         }
